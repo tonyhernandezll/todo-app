@@ -6,7 +6,7 @@ import "./todoapp.css";
 function TodoApp() {
   const [task, setTask] = useState("");
 
-  const [tasklist, setTasklist] = useState([])
+  const [tasklist, setTaskList] = useState([])
   
 
   const handleChange = (e) => {
@@ -14,6 +14,16 @@ function TodoApp() {
   };
 
   const AddTask = () => {
+    if(task !== ""){
+      const taskDetails = {
+        id: Math.floor(Math.random()*1000),
+        value: task,
+        isCompleted: false,
+      }
+
+      setTaskList([...tasklist, taskDetails]);
+
+    }
 
   }
   return (
@@ -26,7 +36,17 @@ function TodoApp() {
         placeholder="Add task here..."
       />
       <button className="add-btn" onClick={AddTask}>Add</button>
-    
+    <br/>
+
+
+{tasklist !== [] ? (
+  <ul>
+    {tasklist.map((t) => (
+      <li className="listitem">{t.value}</li>
+    ))}
+  </ul>
+) : null }
+   
       
     </div>
   )
