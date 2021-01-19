@@ -9,14 +9,18 @@
 }
 
 .todo input {
-  background: transparent;
-  border: none;
+  background: white;
+  border: 2px dotted rgb(100, 104, 104);
+  border-radius: 4px;
+
   color: black;
-  border-bottom: 5px dashed black;
+  box-sizing: border-box;
+  /* border-bottom: 5px dashed black; */
+
   min-width: 400px;
   margin-top: 40px;
-  padding: 5px;
-  font-size: 1rem;
+  padding: 12px 20px;
+  font-size: 1.5rem;
 }
 
 .todo input::placeholder {
@@ -26,7 +30,7 @@
 
 .todo input:focus {
   outline: none;
-  border: 2px dotted black;
+  border: 2px solid black;
 }
 
 .todo .add-btn {
