@@ -30,6 +30,22 @@ function TodoApp() {
     e.preventDefault();
     setTaskList(tasklist.filter((t) => t.id != id))
   }
+
+  const taskCompleted = (e, id) => {
+    e.preventDefault();
+    //les's find index of element//
+    const element = tasklist.findIndex(elem => elem.id == id);
+
+    //copy array into new variable//
+    const newTaskList = [...tasklist]
+
+    //edit our element//
+    newTaskList[element] = {
+      ...newTaskList[element],
+      isCompleted: true,
+    }
+    setTaskList(newTaskList);
+  }
   return (
     <div className="todo">
       <input 
@@ -46,9 +62,9 @@ function TodoApp() {
 {tasklist !== [] ? (
   <ul>
     {tasklist.map((t) => (
-      <li className="listitem">
+      <li className={t.isCompleted ? "crossText" : "listitem"}>
         {t.value}
-        <button className="completed">Completed</button>
+        <button className="completed" onClick={(e) => taskCompleted(e, t.id)}>Completed</button>
          
         
 
